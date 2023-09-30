@@ -11,9 +11,9 @@ function Book(name, author, genre, year, totPages, complPages)
     this.completedPages = complPages;
 }
 
-function addBookToLibrary() 
+function addBookToLibrary(book) 
 {
-    //pass
+
 }
 
 const bookWidget = document.getElementById('book-widget-cont-overlay');
@@ -38,10 +38,47 @@ const yearOfPublication = document.getElementById('year');
 const totPages = document.getElementById('totPages');
 const readPages = document.getElementById('readPages');
 const error = document.getElementById('error');
+const displayDiv = document.getElementById('display-grid');
+
+function clearFields()
+{
+    bookName.value = "";
+    authorName.value = "";
+    genre.value = "";
+    yearOfPublication.value = "";
+    totPages.value = "";
+    readPages.value = "";
+    error.innerText = "";
+}
+
+function displayElem(book)
+{
+    const cell = document.createElement('div');
+    const nameDiv = document.createElement('div');
+    const authorDiv = document.createElement('div');
+    const yearDiv = document.createElement('div');
+    const genreDiv = document.createElement('div');
+    nameDiv.innerText = book.name;
+    cell.append(nameDiv);
+    cell.classList.add('display-cell');
+    displayDiv.append(cell);
+
+}
+
+function displayLibrary()
+{
+    displayDiv.innerHTML ='';
+    let i = 0;
+    while ( i < myLibrary.length)
+    {
+        displayElem(myLibrary[i]);
+    }
+}
+
 
 function handleForm(e)
 {
-    
+    e.preventDefault();
     let errorMessages = [];
 
     if (Number(readPages.value) > Number(totPages.value))
@@ -64,6 +101,8 @@ function handleForm(e)
                             readPages.value);
         console.log(book);
         myLibrary.push(book);
+        clearFields();
+        displayElem(book);
     }
 }
 

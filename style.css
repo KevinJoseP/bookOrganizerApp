@@ -51,6 +51,7 @@ html
     justify-content: center;
     align-items: center;
     padding-top: 4rem;
+    padding-bottom: 3rem;
 }
 
 #add-book
@@ -84,13 +85,12 @@ html
     justify-content: center;
     align-items: center;
     height: 4rem;
-    position: absolute;
-    bottom: 1rem;
+
 }
 
 #book-widget-cont-overlay
 {
-    display: flex;
+    display: none;
     width: 100vw;
     min-height: 100vh;
     position: absolute;
@@ -239,6 +239,25 @@ html
     padding: 1.3rem;
     font-size: 1rem;
     border-radius: 20px;
+}
+
+.display-grid
+{
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 1rem;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+.display-cell
+{
+    width: 30rem;
+    height: 30rem;
+    background-color: gray;
+    color: wheat;
+    margin: auto;
 }
 
 
