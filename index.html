@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book Keeper</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section class="main-section" id="main-section">
+        <nav class="nav-bar">
+            <img src="./book-vector-icon-0.jpg" alt="book logo" class="app-logo">
+            <div class="main-title">The Book Keeper</div>
+        </nav>
+        <div class="display-div">
+            <button id="add-book">Add book +</button>
+        
+        </div>
+        <div class="book-widget-cont-overlay" id="book-widget-cont-overlay">
+            <div class="book-widget-cont">
+                <button id="close-btn"><span class="close">x</span></button>
+                <form class="form-format" id="form">
+                    <div class="error" id="error"></div>
+                    <div class="input-group width80">
+                        <input type="text" id="book-name" class="text-input" required>
+                        <label for="book-name" class="form-label text-label">NAME OF THE BOOK</label>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="input-group width80">
+                        <input type="text" id="author-name" class="text-input" required>
+                        <label for="author-name" class="form-label text-label">NAME OF THE AUTHOR</label>
+                        <div class="underline"></div>
+                    </div>
+
+                    <div class="input-group width80">
+                        <input type="text" id="genre-name" class="text-input" required>
+                        <label for="genre" class="form-label text-label">GENRE</label>
+                        <div class="underline"></div>
+                    </div>
+
+                    <div class="input-group width80">
+                        <input type="text" id="year" class="text-input" required>
+                        <label for="year" class="form-label text-label">YEAR OF PUBLICATION</label>
+                        <div class="underline"></div>
+                    </div>
+
+
+                    <div class="page-grouping">
+                
+                        <div class="input-group width40">
+                            <input type="number" id="totPages" class="text-input" min="0" required>
+                            <label for="totPages" class="form-label text-label">TOTAL NUMBER OF PAGES</label>
+                            <div class="underline"></div>
+                        </div>
+
+                        <div class="input-group width40">
+                            <input type="number" id="readPages" class="text-input" min="0" required>
+                            <label for="readPages" class="form-label text-label">NUMBER OF PAGES READ</label>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit">SUBMIT</button>
+
+                </form>
+                    
+
+            </div>
+        </div>
+        <footer class="footer">
+            <h5>Copyright &#169; Kevin Jose </h5>
+        </footer>
+    </section>
+
+    <script src="./script.js"></script>
+</body>
+</html>

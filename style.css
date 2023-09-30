@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+html
+{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.border2px
+{
+    border: 2px solid red;
+}
+
+.main-section
+{
+    background-color: black;
+    min-height: 100vh;
+    padding-top: 1rem;
+}
+
+.nav-bar
+{
+    width: 100vw;
+    background-color: rgb(182, 97, 97);
+    height: 6rem;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.app-logo
+{
+    width: 7rem;
+}
+
+.main-title
+{
+    font-size: 3rem;
+    font-family: 'Cookie', cursive;
+}
+
+.display-div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+}
+
+#add-book
+{
+
+    background-color: rgb(93, 78, 78);
+    justify-self: center;
+    align-self: center;
+    line-height: 0%;
+    padding: 2rem;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    color: bisque;
+    transition: 100ms;
+
+
+}
+
+
+#add-book:hover
+{
+    cursor: pointer;
+    background-color: rgb(56, 48, 48);
+}
+
+.footer
+{
+    width: 100vw;
+    background-color: rgb(182, 97, 97);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    position: absolute;
+    bottom: 1rem;
+}
+
+#book-widget-cont-overlay
+{
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(51, 32, 22, 0.829);
+    background-blend-mode: multiply;
+    top: 0;
+    z-index: 100;
+
+}
+
+.book-widget-cont
+{
+    width: 30rem;
+    height: 40rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    box-shadow: 0 0 16px rgb(201, 129, 129);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.add-book-widget
+{
+    
+ 
+}
+
+.page-grouping
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.error
+{
+    text-align: center;
+    width: 90%;
+    color: red;
+}
+
+#close-btn
+{
+    font-size: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.form-format
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    height: 90%;
+}
+
+#close-btn:hover
+{
+    cursor: pointer;
+    scale: 1.2;
+}
+
+.width80
+{
+    width: 80%;
+}
+
+.width40
+{
+    width: 40%;
+}
+.input-group
+{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.form-label
+{
+    color: rosybrown;
+}
+
+.text-input
+{
+    width: 100%;
+    background: transparent;
+    color: antiquewhite;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: none;
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+    cursor: text;
+}
+
+.text-label
+{
+    position: absolute;
+    left: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+}
+
+.underline
+{
+    width: 100%;
+    height: 2px;
+    background-color: rosybrown;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.text-input:valid ~ .text-label,
+.text-input:focus ~ .text-label
+{
+    transform: translateY(-1.5rem);
+    transition: 200ms;
+    font-size: 1rem;
+    
+}
+
+#submit
+{
+    color: black;
+    background-color: rgb(167, 50, 50);
+    padding: 1.3rem;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+
+
+
