@@ -51,6 +51,20 @@ function clearFields()
     error.innerText = "";
 }
 
+function handleRemove(e)
+{
+    let dataKey = this.dataset.removeKey;
+
+    const cells = document.querySelectorAll(`[data-key="${dataKey}"]`);
+
+    if (cells.length == 1)
+    {
+        cells[0].remove();
+    }
+    
+    delete(myLibrary[dataKey]);
+}
+
 function displayElem(book)
 {
     const cell = document.createElement('div');
@@ -88,7 +102,7 @@ function displayElem(book)
     compBarBeforeDiv.classList.add('comp-bar-before');
     compBarBeforeDiv.dataset.statusKey = book.name.toUpperCase();
     removeButt.classList.add('remove');
-    removeButt.dataset.key = book.name.toUpperCase();
+    removeButt.dataset.removeKey = book.name.toUpperCase();
     removeImg.classList.add('delete-icon');
     pageOrg.classList.add('page-organize');
     delimiterDiv2.classList.add('delimiter');
@@ -97,7 +111,7 @@ function displayElem(book)
     pageInput.classList.add('read-input');
     pageInput.type = "number";
     pageInput.value = book.completedPages;
-    pageInput.dataset.key = book.name.toUpperCase();
+    pageInput.dataset.inputKey = book.name.toUpperCase();
     pageInput.addEventListener('change', handleInputChange);
 
 
@@ -141,6 +155,7 @@ function displayElem(book)
     pageSection.append(completionCont);
     cell.append(pageSection);
 
+    removeButt.addEventListener('click', handleRemove);
     removeButt.append(removeImg);
     cell.append(removeButt);
 
@@ -194,7 +209,7 @@ function handleForm(e)
 function handleInputChange(e)
 {
     console.log(e);
-    let dataKey = this.dataset.key;
+    let dataKey = this.dataset.inputKey;
 
     let lbook = myLibrary[dataKey];
     console.log(lbook);
@@ -222,3 +237,6 @@ form.addEventListener('submit', handleForm);
 
 const pageInputs = document.querySelectorAll('.read-input');
 pageInputs.forEach(page => page.addEventListener('change', handleInputChange));
+
+const btns = document.querySelectorAll('.remove');
+btns.forEach(btn => btn.addEventListener('click', handleRemove))
