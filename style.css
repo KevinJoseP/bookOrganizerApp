@@ -118,11 +118,6 @@ html
     
 }
 
-.add-book-widget
-{
-    
- 
-}
 
 .page-grouping
 {
@@ -329,7 +324,7 @@ html
     background-color: black;
 }
 
-.comp-bar::before
+.comp-bar-before
 {
     content: '';
     position: absolute;

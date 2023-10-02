@@ -27,7 +27,7 @@ function handleAdd(e)
 function closeWindow(e)
 {
     bookWidget.style.display = "none";
-    console.log(myLibrary);
+    // console.log(myLibrary);
 }
 
 
@@ -64,7 +64,10 @@ function displayElem(book)
     const totPagesDiv = document.createElement('div');
     const pagesReadDiv = document.createElement('div');
     const completionCont = document.createElement('div');
+    const compBarBeforeDiv = document.createElement('div');
     const compBarDiv = document.createElement('div');
+    const removeButt = document.createElement('button');
+    const removeImg = document.createElement('img');
     
 
     cell.classList.add('display-cell');
@@ -79,9 +82,14 @@ function displayElem(book)
     pagesReadDiv.classList.add('pages-read');
     completionCont.classList.add('completion');
     compBarDiv.classList.add('comp-bar');
+    compBarBeforeDiv.classList.add('comp-bar-before');
+    removeButt.classList.add('remove');
+    removeImg.classList.add('delete-icon');
+    removeImg.src = "./dustbin.svg";
+    removeImg.alt = "delete icon";
 
 
-    nameDiv.innerText = book.name;
+    nameDiv.innerText = book.name.toUpperCase();
     authorDiv.innerText = book.author;
     yearDiv.innerText = book.year;
     genreDiv.innerText = book.genre;
@@ -99,7 +107,25 @@ function displayElem(book)
 
     pageSection.append(totPagesDiv);
     pageSection.append(pagesReadDiv);
+
+    let percentCompletion = (Number(book.completedPages) / Number(book.totalPages))*100;
+    console.log(percentCompletion);
+    compBarBeforeDiv.style.width = percentCompletion + "%";
+
+    if(percentCompletion == 100)
+    {
+        compBarBeforeDiv.style.backgroundColor = "#00FF00"; 
+    }
+
+    completionCont.append(compBarBeforeDiv);
+    completionCont.append(compBarDiv);
+    pageSection.append(completionCont);
     cell.append(pageSection);
+
+    removeButt.append(removeImg);
+    cell.append(removeButt);
+
+
     
     displayDiv.append(cell);
 
@@ -124,7 +150,7 @@ function handleForm(e)
     if (Number(readPages.value) > Number(totPages.value))
     {
         errorMessages.push("Read pages cannot be greater than total number of pages");
-        console.log(readPages);
+        // console.log(readPages);
     }
     if (errorMessages.length > 0)
     {
@@ -139,7 +165,7 @@ function handleForm(e)
                             yearOfPublication.value,
                             totPages.value,
                             readPages.value);
-        console.log(book);
+        // console.log(book);
         myLibrary.push(book);
         clearFields();
         displayElem(book);
