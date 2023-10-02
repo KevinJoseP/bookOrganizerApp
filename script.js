@@ -1,4 +1,4 @@
-const myLibrary = [];
+const myLibrary = {};
 
 
 function Book(name, author, genre, year, totPages, complPages) 
@@ -60,7 +60,9 @@ function displayElem(book)
     const genreDiv = document.createElement('div');
     const yearGroup = document.createElement('div');
     const delimiterDiv = document.createElement('div');
+    const delimiterDiv2 = document.createElement('div');
     const pageSection = document.createElement('div');
+    const pageOrg = document.createElement('div');
     const totPagesDiv = document.createElement('div');
     const pagesReadDiv = document.createElement('div');
     const completionCont = document.createElement('div');
@@ -68,8 +70,9 @@ function displayElem(book)
     const compBarDiv = document.createElement('div');
     const removeButt = document.createElement('button');
     const removeImg = document.createElement('img');
+    const pageInput = document.createElement('input');
     
-
+    cell.dataset.key = book.name.toUpperCase();
     cell.classList.add('display-cell');
     nameDiv.classList.add('book-name');
     authorDiv.classList.add('author-name');
@@ -83,10 +86,19 @@ function displayElem(book)
     completionCont.classList.add('completion');
     compBarDiv.classList.add('comp-bar');
     compBarBeforeDiv.classList.add('comp-bar-before');
+    compBarBeforeDiv.dataset.statusKey = book.name.toUpperCase();
     removeButt.classList.add('remove');
+    removeButt.dataset.key = book.name.toUpperCase();
     removeImg.classList.add('delete-icon');
+    pageOrg.classList.add('page-organize');
+    delimiterDiv2.classList.add('delimiter');
     removeImg.src = "./dustbin.svg";
     removeImg.alt = "delete icon";
+    pageInput.classList.add('read-input');
+    pageInput.type = "number";
+    pageInput.value = book.completedPages;
+    pageInput.dataset.key = book.name.toUpperCase();
+    pageInput.addEventListener('change', handleInputChange);
 
 
     nameDiv.innerText = book.name.toUpperCase();
@@ -94,8 +106,12 @@ function displayElem(book)
     yearDiv.innerText = book.year;
     genreDiv.innerText = book.genre;
     delimiterDiv.innerText = "|";
+
+    const pageText = document.createTextNode("Pages Read: ");
+    delimiterDiv2.innerText = "|";
     totPagesDiv.innerText = "Total Pages: " + book.totalPages;
-    pagesReadDiv.innerText = "Pages Read: " + book.completedPages;
+    pagesReadDiv.append(pageText);
+    pagesReadDiv.append(pageInput);
 
     cell.append(nameDiv);
     cell.append(authorDiv);
@@ -105,11 +121,14 @@ function displayElem(book)
     yearGroup.append(genreDiv);
     cell.append(yearGroup);
 
-    pageSection.append(totPagesDiv);
-    pageSection.append(pagesReadDiv);
+    pageOrg.append(totPagesDiv);
+    pageOrg.append(delimiterDiv2);
+    pageOrg.append(pagesReadDiv);
+
+    pageSection.append(pageOrg);
 
     let percentCompletion = (Number(book.completedPages) / Number(book.totalPages))*100;
-    console.log(percentCompletion);
+    // console.log(percentCompletion);
     compBarBeforeDiv.style.width = percentCompletion + "%";
 
     if(percentCompletion == 100)
@@ -134,10 +153,10 @@ function displayElem(book)
 function displayLibrary()
 {
     displayDiv.innerHTML ='';
-    let i = 0;
-    while ( i < myLibrary.length)
+
+    for(const key of Object.keys(myLibrary))
     {
-        displayElem(myLibrary[i]);
+        displayElem(myLibrary[key]);
     }
 }
 
@@ -166,9 +185,28 @@ function handleForm(e)
                             totPages.value,
                             readPages.value);
         // console.log(book);
-        myLibrary.push(book);
+        myLibrary[book.name.toUpperCase()] = book;
         clearFields();
         displayElem(book);
+    }
+}
+
+function handleInputChange(e)
+{
+    console.log(e);
+    let dataKey = this.dataset.key;
+
+    let lbook = myLibrary[dataKey];
+    console.log(lbook);
+    lbook.completedPages = this.value;
+    
+
+    const statusBar = document.querySelectorAll(`[data-status-key="${dataKey}"]`);
+    if (statusBar.length == 1)
+    {
+        
+        let percentCompletion = (Number(lbook.completedPages) / Number(lbook.totalPages))*100;
+        statusBar[0].style.width = percentCompletion + "%";
     }
 }
 
@@ -181,3 +219,6 @@ closebtn.addEventListener('click', closeWindow);
 
 const form = document.getElementById('form');
 form.addEventListener('submit', handleForm);
+
+const pageInputs = document.querySelectorAll('.read-input');
+pageInputs.forEach(page => page.addEventListener('change', handleInputChange));

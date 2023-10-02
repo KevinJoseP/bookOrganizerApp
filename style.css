@@ -287,11 +287,24 @@ html
     padding: 0 1rem;
 }
 
+.page-organize
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .delete-icon
 {
     width: 2rem;
     height: 2rem;
     background-color: red;
+}
+
+.by-style
+{
+    padding: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .remove
@@ -331,6 +344,14 @@ html
     height: 4px;
     background-color: palevioletred;
     width: 20%;
+}
+
+.read-input
+{
+    background-color: none;
+    width: 4rem;
+    background: none;
+    color: wheat;
 }
 
 
