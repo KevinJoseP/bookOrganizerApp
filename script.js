@@ -58,9 +58,49 @@ function displayElem(book)
     const authorDiv = document.createElement('div');
     const yearDiv = document.createElement('div');
     const genreDiv = document.createElement('div');
-    nameDiv.innerText = book.name;
-    cell.append(nameDiv);
+    const yearGroup = document.createElement('div');
+    const delimiterDiv = document.createElement('div');
+    const pageSection = document.createElement('div');
+    const totPagesDiv = document.createElement('div');
+    const pagesReadDiv = document.createElement('div');
+    const completionCont = document.createElement('div');
+    const compBarDiv = document.createElement('div');
+    
+
     cell.classList.add('display-cell');
+    nameDiv.classList.add('book-name');
+    authorDiv.classList.add('author-name');
+    yearGroup.classList.add('year-genre-grouping');
+    yearDiv.classList.add('year');
+    delimiterDiv.classList.add('delimiter');
+    genreDiv.classList.add('genre');
+    pageSection.classList.add('pages-section');
+    totPagesDiv.classList.add('total-pages');
+    pagesReadDiv.classList.add('pages-read');
+    completionCont.classList.add('completion');
+    compBarDiv.classList.add('comp-bar');
+
+
+    nameDiv.innerText = book.name;
+    authorDiv.innerText = book.author;
+    yearDiv.innerText = book.year;
+    genreDiv.innerText = book.genre;
+    delimiterDiv.innerText = "|";
+    totPagesDiv.innerText = "Total Pages: " + book.totalPages;
+    pagesReadDiv.innerText = "Pages Read: " + book.completedPages;
+
+    cell.append(nameDiv);
+    cell.append(authorDiv);
+
+    yearGroup.append(yearDiv);
+    yearGroup.append(delimiterDiv);
+    yearGroup.append(genreDiv);
+    cell.append(yearGroup);
+
+    pageSection.append(totPagesDiv);
+    pageSection.append(pagesReadDiv);
+    cell.append(pageSection);
+    
     displayDiv.append(cell);
 
 }
